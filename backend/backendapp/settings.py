@@ -58,10 +58,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Internal
-    'backendcore.apps.BackendcoreConfig'
+    'backendcore.apps.BackendcoreConfig',
 
     #external
-    'rest_framework'
+    'rest_framework',
     'corsheaders'
 ]
 
