@@ -22,8 +22,8 @@ SIMPLE_JWT = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    "http://127.0.0.1:56694",
-    "http://localhost:56694"
+    "http://127.0.0.1:8000",
+    "http://localhost:8000"
 ]
 ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
@@ -58,11 +58,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Internal
-    'backendcore.apps.BackendcoreConfig',
+    'backendcore_api',
 
     #external
     'rest_framework',
-    'corsheaders'
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 #https://www.django-rest-framework.org/
@@ -71,7 +72,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        #'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
 
@@ -92,7 +93,7 @@ ROOT_URLCONF = 'backendapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
