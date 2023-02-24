@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   Future<http.Response> buttonPressed() async {
     http.Response returnedResult = await http.get(
-        Uri.parse('http://localhost:8000/app/hellodjango'),
+        Uri.parse("http://localhost:8000/app/hellodjango"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset-UTF-8'
         });
