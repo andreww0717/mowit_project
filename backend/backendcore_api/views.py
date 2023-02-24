@@ -6,6 +6,9 @@ from rest_framework import status
 from rest_framework.permissions import IsAdminUser
 from django.contrib.auth.models import User
 
+from rest_framework.decorators import api_view
+
+
 # Create your views here.
 class UserRecordView(APIView):
     """
@@ -36,5 +39,39 @@ class UserRecordView(APIView):
             status=status.HTTP_400_BAD_REQUEST
         )
 
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        {
+            'Endpoint': '/notes/',
+            'method': 'GET',
+            'body' : None,
+            'description': 'Returns an array of notes'
+        },
+        {
+            'Endpoint': '/notes/id',
+            'method': 'GET',
+            'body' : None,
+            'description': 'Returns a single note object'
+        },
+        {
+            'Endpoint': '/notes/create',
+            'method': 'POST',
+            'body' : {'body': ""},
+            'description': 'Creates new note with data sent in post request'
+        },
+        {
+            'Endpoint': '/notes/id/update/',
+            'method': 'PUT',
+            'body' : {'body': ""},
+            'description': 'Creates an existing note with data sent in'
+        },
+        {
+            'Endpoint': '/notes/id/delete/',
+            'method': 'DELETE',
+            'body' : None,
+            'description': 'Deletes and exiting note'
+        },
 
-
+    ]
+    return Response(routes)
