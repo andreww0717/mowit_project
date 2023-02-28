@@ -1,13 +1,17 @@
-from django.shortcuts import HttpResponse, render
-from .serializers import UserSerializer
+from django.shortcuts import HttpResponse, render, redirect
+from .serializers import UserSerializer, RegistrationSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm 
 
 from rest_framework.decorators import api_view
-
+from .forms import NewUserForm
+from django.contrib.auth import login
+from django.contrib import messages
 
 # Create your views here.
 class UserRecordView(APIView):
@@ -38,6 +42,8 @@ class UserRecordView(APIView):
             },
             status=status.HTTP_400_BAD_REQUEST
         )
+
+
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -75,3 +81,57 @@ def getRoutes(request):
 
     ]
     return Response(routes)
+
+# New Account Creation (RegistrationSerializer)
+@api_view(['POST',])
+def registration_view(request):
+    if request.method == 'POST':
+        serializer = RegistrationSerializer(data=request.data)
+        data = {}
+        if serializer.is_valid():
+            account = serializer.save()
+            data['response'] = "New User Registered!"
+            data['email'] = account.email
+            data['username'] = account.username
+
+        else:
+            data = serializer.errors
+        return Response(data)
+
+# Homepage
+def homepage(request):
+	return render(request=request, template_name='homepage.html')
+
+# Registration Form
+def register_request(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return redirect("backendcore_api:homepage")
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm()
+	return render (request=request, template_name="register.html", context={"register_form":form})
+
+#Login Form
+def login_request(request):
+	if request.method == "POST":
+		form = AuthenticationForm(request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect("backendcore_api:homepage")
+			else:
+				messages.error(request,"Invalid username or password.")
+		else:
+			messages.error(request,"Invalid username or password.")
+	form = AuthenticationForm()
+	return render(request=request, template_name="login.html", context={"login_form":form})
+
+#Logout Form

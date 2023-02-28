@@ -63,17 +63,27 @@ INSTALLED_APPS = [
     #external
     'rest_framework',
     'rest_framework.authtoken',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'corsheaders',
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4',)
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #https://www.django-rest-framework.org/
 REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-        #'rest_framework.authentication.TokenAuthentication',
-    ]
+    
+    #'DEFAULT_PERMISSION_CLASSES': [
+     #   'rest_framework.permissions.IsAuthenticated'
+    #],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication', 
+    )
+       
+    
 }
 
 MIDDLEWARE = [
