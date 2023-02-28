@@ -44,7 +44,6 @@ class UserRecordView(APIView):
         )
 
 
-
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
@@ -92,7 +91,9 @@ def registration_view(request):
             account = serializer.save()
             data['response'] = "New User Registered!"
             data['email'] = account.email
-            data['username'] = account.username
+            data['username'] = account.usernamedata
+	        
+	        
 
         else:
             data = serializer.errors

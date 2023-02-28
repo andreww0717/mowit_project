@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     
     # Internal
     'backendcore_api.apps.BackendcoreConfig',
+    'Contractor',
+    'Customer',
 
     #external
     'rest_framework',
