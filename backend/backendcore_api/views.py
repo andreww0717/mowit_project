@@ -1,103 +1,115 @@
-from django.shortcuts import HttpResponse, render, redirect
-from .serializers import UserSerializer, RegistrationSerializer
+
+
+# Rest_Framework
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
-from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import AuthenticationForm 
+#from rest_framework.decorators import api_view
 
-from rest_framework.decorators import api_view
-from .forms import NewUserForm
-from django.contrib.auth import login
+# Django Contrib
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib import messages
 
+# Django shortcuts
+from django.shortcuts import HttpResponse, render, redirect
+
+
+# from .serializers import (
+# 	#UserSerializer 
+#     #RegistrationSerializer
+#     )
+
+from .forms import NewUserForm
+
+
 # Create your views here.
-class UserRecordView(APIView):
-    """
-    API View to create or get a list of all the registered
-    users. GET request returns the registered users whereas
-    a POST request allows to create a new user.
-    """
-    permission_classes = [IsAdminUser]
+# class UserRecordView(APIView):
+#     """
+#     API View to create or get a list of all the registered
+#     users. GET request returns the registered users whereas
+#     a POST request allows to create a new user.
+#     """
+#     permission_classes = [IsAdminUser]
 
-    def get(self, format=None):
-        users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
+#     def get(self, format=None):
+#         users = User.objects.all()
+#         serializer = UserSerializer(users, many=True)
+#         return Response(serializer.data)
 
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=ValueError):
-            serializer.create(validated_data=request.data)
-            return Response(
-                serializer.data,
-                status=status.HTTP_201_CREATED
-            )
-        return Response(
-            {
-                "error": True,
-                "error_msg": serializer.error_messages,
-            },
-            status=status.HTTP_400_BAD_REQUEST
-        )
+#     def post(self, request):
+#         serializer = UserSerializer(data=request.data)
+#         if serializer.is_valid(raise_exception=ValueError):
+#             serializer.create(validated_data=request.data)
+#             return Response(
+#                 serializer.data,
+#                 status=status.HTTP_201_CREATED
+#             )
+#         return Response(
+#             {
+#                 "error": True,
+#                 "error_msg": serializer.error_messages,
+#             },
+#             status=status.HTTP_400_BAD_REQUEST
+#         )
 
 
-@api_view(['GET'])
-def getRoutes(request):
-    routes = [
-        {
-            'Endpoint': '/notes/',
-            'method': 'GET',
-            'body' : None,
-            'description': 'Returns an array of notes'
-        },
-        {
-            'Endpoint': '/notes/id',
-            'method': 'GET',
-            'body' : None,
-            'description': 'Returns a single note object'
-        },
-        {
-            'Endpoint': '/notes/create',
-            'method': 'POST',
-            'body' : {'body': ""},
-            'description': 'Creates new note with data sent in post request'
-        },
-        {
-            'Endpoint': '/notes/id/update/',
-            'method': 'PUT',
-            'body' : {'body': ""},
-            'description': 'Creates an existing note with data sent in'
-        },
-        {
-            'Endpoint': '/notes/id/delete/',
-            'method': 'DELETE',
-            'body' : None,
-            'description': 'Deletes and exiting note'
-        },
+# @api_view(['GET'])
+# def getRoutes(request):
+#     routes = [
+#         {
+#             'Endpoint': '/notes/',
+#             'method': 'GET',
+#             'body' : None,
+#             'description': 'Returns an array of notes'
+#         },
+#         {
+#             'Endpoint': '/notes/id',
+#             'method': 'GET',
+#             'body' : None,
+#             'description': 'Returns a single note object'
+#         },
+#         {
+#             'Endpoint': '/notes/create',
+#             'method': 'POST',
+#             'body' : {'body': ""},
+#             'description': 'Creates new note with data sent in post request'
+#         },
+#         {
+#             'Endpoint': '/notes/id/update/',
+#             'method': 'PUT',
+#             'body' : {'body': ""},
+#             'description': 'Creates an existing note with data sent in'
+#         },
+#         {
+#             'Endpoint': '/notes/id/delete/',
+#             'method': 'DELETE',
+#             'body' : None,
+#             'description': 'Deletes and exiting note'
+#         },
 
-    ]
-    return Response(routes)
+#     ]
+#     return Response(routes)
 
 # New Account Creation (RegistrationSerializer)
-@api_view(['POST',])
-def registration_view(request):
-    if request.method == 'POST':
-        serializer = RegistrationSerializer(data=request.data)
-        data = {}
-        if serializer.is_valid():
-            account = serializer.save()
-            data['response'] = "New User Registered!"
-            data['email'] = account.email
-            data['username'] = account.usernamedata
+# @api_view(['POST',])
+# def registration_view(request):
+#     if request.method == 'POST':
+#         serializer = RegistrationSerializer(data=request.data)
+#         data = {}
+#         if serializer.is_valid():
+#             account = serializer.save()
+#             data['response'] = "New User Registered!"
+#             data['email'] = account.email
+#             data['username'] = account.usernamedata
 	        
 	        
 
-        else:
-            data = serializer.errors
-        return Response(data)
+#         else:
+#             data = serializer.errors
+#         return Response(data)
 
 # Homepage
 def homepage(request):
@@ -111,7 +123,7 @@ def register_request(request):
 			user = form.save()
 			login(request, user)
 			messages.success(request, "Registration successful." )
-			return redirect("backendcore_api:homepage")
+			return redirect("backendcore_api:login")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="register.html", context={"register_form":form})
@@ -136,3 +148,7 @@ def login_request(request):
 	return render(request=request, template_name="login.html", context={"login_form":form})
 
 #Logout Form
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have been logged out.")
+    return redirect('backendcore_api:homepage')
