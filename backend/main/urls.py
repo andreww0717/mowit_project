@@ -21,9 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backendcore_api.urls', namespace='api')),
     path('', include('django.contrib.auth.urls')),
-    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
-
     
+
+  
 ]
 
 

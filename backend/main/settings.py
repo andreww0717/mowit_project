@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Internal
-    'backendcore_api.apps.BackendcoreConfig',
+   # 'backendcore_api.apps.BackendcoreConfig',
+    'backendcore_api',
     'Contractor',
     'Customer',
 
@@ -172,3 +173,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/login'
+
+#AUTH_USER_MODEL = "backendcore_api.User"
