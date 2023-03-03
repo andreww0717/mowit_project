@@ -1,4 +1,4 @@
-"""backendapp URL Configuration
+"""main URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -19,9 +19,11 @@ from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('backendcore_api.urls', namespace='api')),
-    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
-    #path('', include('backendcore_api.urls'))
+    path('', include('backendcore_api.urls', namespace='api')),
+    path('', include('django.contrib.auth.urls')),
+    
+
+  
 ]
 
 
