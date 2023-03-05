@@ -78,9 +78,9 @@ REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
     
-    #'DEFAULT_PERMISSION_CLASSES': [
-     #   'rest_framework.permissions.IsAuthenticated'
-    #],
+    'DEFAULT_PERMISSION_CLASSES': [
+       'rest_framework.permissions.IsAuthenticated'
+    ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication', 
@@ -176,4 +176,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/login'
 
-#AUTH_USER_MODEL = "backendcore_api.User"
+# AUTH_USER_MODEL = "backendcore_api.User"

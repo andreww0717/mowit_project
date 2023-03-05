@@ -22,4 +22,3 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 	
-	

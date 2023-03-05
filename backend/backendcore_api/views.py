@@ -9,17 +9,18 @@ from rest_framework.permissions import IsAdminUser
 # Django Contrib
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 
 # Django shortcuts
 from django.shortcuts import HttpResponse, render, redirect
 
 # from .serializers import (
-# 	#UserSerializer 
+# 	#UserSerializer
 #     #RegistrationSerializer
 #     )
 
+from Contractor.forms import NewContractorForm
 from .forms import NewUserForm
 
 # Create your views here.
@@ -36,7 +37,7 @@ def register_request(request):
 			user = form.save()
 			login(request, user)
 			return redirect("backendcore_api:login")
-	else:	
+	else:
 		form = NewUserForm()
 	return render (request=request, template_name='register.html', context={"register_form":form})
 
@@ -69,22 +70,45 @@ def logout_request(request):
 #=============Contractor===============
 
 #Contractor Homepage
+def contractor_homepage(request):
+	return render(request=request, template_name='contractor_homepage.html')
 
 #Contractor Registration
 def contractor_register_request(request):
 	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful." )
-			return redirect("backendcore_api:login")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request=request, template_name="register.html", context={"register_form":form})
+		contractor_form = NewContractorForm(request.POST)
+		if contractor_form.is_valid():
+			contractor = contractor_form.save()
+			login(request, contractor)
+			#messages.success(request, "Registration successful." )
+			return redirect("backendcore_api:Contractor_homepage")
+		#messages.error(request, "Unsuccessful registration. Invalid information.")
+	contractor_form = NewContractorForm()
+	return render (request=request, template_name="contractor_register.html", context={"contractor_register_form":contractor_form})
 
+#Contractor Login
+def contractor_login_request(request):
+	if request.method == "POST":
+		contractor_form = AuthenticationForm(request, data=request.POST)
+		if contractor_form.is_valid():
+			username = contractor_form.cleaned_data.get('username')
+			password = contractor_form.cleaned_data.get('password')
+			contractor = authenticate(username=username, password=password)
+			if contractor is not None:
+				login(request, contractor)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect("contractor_api:Contractor_homepage")
+			# else:
+			# 	messages.error(request,"Invalid username or password.")
+		# else:
+		# 	messages.error(request,"Invalid username or password.")
+	else:
+		contractor_form = AuthenticationForm()
+	return render(request=request, template_name="contractor_login.html", context={"contractor_login_form":contractor_form})
 #==============Customer================
 
 #Customer Homepage
+# def customer_homepage(request):
+# 	return render(request=request, template_name='customer_homepage.html')
 
 #Customer Registration

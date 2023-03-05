@@ -3,5 +3,5 @@ from .models import Contractor
 
 @admin.register(Contractor)
 class ContractorAdmin(admin.ModelAdmin):
-  list_display = ['id', 'contractor_name', 'contractor_email', 'contractor_phone', 'contractor_zipcode']
+  list_display = ['firstname', 'lastname','username', 'email', 'phone', 'zipcode']
 
