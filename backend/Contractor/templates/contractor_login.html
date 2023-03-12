@@ -1,7 +1,8 @@
 {% extends "contractor_base.html" %}
-{% block title %} Login {% endblock %}
+{% block title %} Contractor Login {% endblock %}
 {% block content %}      
 {% load crispy_forms_tags %}
+
 
 <!--Login--> 
 <div class="container py-5">
@@ -9,9 +10,18 @@
   <form method="POST">
     {% csrf_token %}
     {{ contractor_login_form|crispy }}
+    
     <button class="btn btn-primary" type="submit">Login</button>
   </form>
   <p class="text-center">Don't have an account? <a href="/contractor/register">Create an account</a>.</p>
 </div>
+<br>
+<!-- Message shows up when user is either register successfully or unsucessfully  -->
+<div class = "text-xl-center">
+  {% for message in messages %}
+  <p>{{message}}</p>
+  {% endfor %}
+</div>
+
 
 {% endblock %}

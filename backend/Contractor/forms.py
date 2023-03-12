@@ -7,14 +7,18 @@ from Contractor.models import Contractor
 class NewContractorForm(UserCreationForm):
   firstname = forms.CharField(max_length=100, required=True)
   lastname = forms.CharField(max_length=100, required=True)
-  username = forms.CharField(max_length=100, required=True)
+  username = forms.CharField(max_length=100, required=False)
   email = forms.EmailField(required=True)
-  phone = forms.CharField(max_length=100, required=True)
+  phone = forms.CharField(max_length=100, required=False)
   zipcode = forms.CharField(max_length=100, required=True)
-
+ 
   class Meta:
       model = Contractor
-      fields = ("firstname", "lastname", "username", "email","phone","zipcode", "password1", "password2")
+      fields = ("firstname", "lastname", "username", "email","phone","zipcode")
+      #Contractors has permission to add, change, delete services
+      # permissions = [
+         
+      # ]
   def save(self, commit=True):
       contractor = super(NewContractorForm, self).save(commit=False)
       contractor.firstname = self.cleaned_data['firstname']
@@ -23,6 +27,8 @@ class NewContractorForm(UserCreationForm):
       contractor.username = self.cleaned_data['username']
       contractor.phone = self.cleaned_data['phone']
       contractor.zipcode = self.cleaned_data['zipcode']
+      
+      
       
       if commit:
         contractor.save()

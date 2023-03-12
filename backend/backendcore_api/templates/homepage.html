@@ -9,20 +9,25 @@
     Are you a customer or contractor?
   </div>
 
-
+<br>
 <!--Contractor Button--> 
 
 
 <div style="margin: 0 auto; width: 656px; text-align: center;">
-    <button >Customer</button> 
-    <button> <a href="contractor/">Contractor</a>
+    <button style="margin:5px;"> <a href="contractor/login/">Contractor</a></button>   
+
+    <button style="margin:5px;"> <a href="customer/login/">Customer</a></button>    
 </div>
 
 
 <!--Customer Button-->
 
 
-
+<div class = "text-xl-center">
+  {% for message in messages %}
+  <p>{{message}}</p>
+  {% endfor %}
+</div>
 
 {% endblock %}
   
