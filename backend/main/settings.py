@@ -58,8 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Internal
-   # 'backendcore_api.apps.BackendcoreConfig',
-    'backendcore_api',
+    'backendcore_api.apps.BackendcoreConfig',
+    #'backendcore_api',
     'Contractor',
     'Customer',
 
@@ -78,9 +78,9 @@ REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
     
-    #'DEFAULT_PERMISSION_CLASSES': [
-     #   'rest_framework.permissions.IsAuthenticated'
-    #],
+    'DEFAULT_PERMISSION_CLASSES': [
+       'rest_framework.permissions.IsAuthenticated'
+    ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication', 
@@ -167,7 +167,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -176,4 +178,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/login'
 
-#AUTH_USER_MODEL = "backendcore_api.User"
+AUTH_USER_MODEL = 'auth.User'
+
+
+
+# AUTHENTICATION_BACKENDS = [
+    
+# ]

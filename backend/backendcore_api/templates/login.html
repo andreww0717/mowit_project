@@ -14,4 +14,10 @@
   <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
 </div>
 
+<div class = "text-xl-center">
+  {% for message in messages %}
+  <p>{{message}}</p>
+  {% endfor %}
+</div>
+
 {% endblock %}
