@@ -9,4 +9,5 @@ class ContractorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Service)
-admin.site.register(Order)
+admin.site.register(OrderStatus)
+admin.site.register(Tag)

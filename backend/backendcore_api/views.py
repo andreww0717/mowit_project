@@ -16,9 +16,17 @@ from django.contrib import messages
 # Django shortcuts
 from django.shortcuts import HttpResponse, render, redirect
 
+# Django views
+from django.views import generic
+from django.views.generic import DetailView
 
+# Customer
 from Customer.forms import NewCustomerForm
+
+# Contractor
 from Contractor.forms import NewContractorForm
+from Contractor.models import *
+
 from .forms import NewUserForm
 
 # Create your views here.
@@ -74,6 +82,11 @@ def profile_request(request):
 #=========================================================================================
 
 #Contractor Homepage
+
+# class ContractorProfilePage(DetailView):
+# 	model = Profile 
+# 	template_name = 'Contractor/contractor_profile.html'
+
 def contractor_homepage(request):
 	return render(request=request, template_name='contractor_homepage.html')
 
@@ -122,6 +135,10 @@ def contractor_logout_request(request):
 #Contractor Profile
 def contractor_profile(request):
 	return render(request=request, template_name='contractor_profile.html')
+
+
+
+
 
 
 #=========================================================================================

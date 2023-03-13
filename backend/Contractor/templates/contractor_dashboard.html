@@ -1,17 +1,23 @@
 
 <div class="row" style="width:800px; margin:0 auto;">
-  <div class="col-md-6">
+  <div class="col-md">
     <h5>Services:</h5>
     <hr>
+
     <div class ="card card-body">
       <a class="btn btn-primary btn-sm btn-block" href="">Create Services</a>
-      <table class="table table-sm">
-        <thead>
+      <table class="table">
           <tr>
             <th>Service</th>
-           <th>Price</th>
+            <th>Price</th>
           </tr>
-        </thead>
+       <!-- Table not showing up -->
+        {% for service in services %}
+          <tr>
+            <td>{{service.name}}</td>
+            <td>{{service.price}}</td>
+          </tr>     
+        {% endfor %}
       </table>
     </div>
   </div>
@@ -21,12 +27,16 @@
     <div class ="card card-body">
       <a class="btn btn-primary btn-sm btn-block" href="">Customer Request</a>
       <table class="table table-sm">
-        <thead>
           <tr>
             <th>Customer</th>
-            <th>Service</th>
+            <th>phone</th>
           </tr>
-        </thead>
+          {% for customer in customers %}
+            <tr>
+              <td>{{customer.firstname}}</td>
+              <td>{{customer.phone}}</td>
+            </tr>     
+          {% endfor %}
       </table>
     </div>
   </div>
