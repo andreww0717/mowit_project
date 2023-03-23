@@ -165,7 +165,7 @@ def customer_register_request(request):
 	customer_form  = NewCustomerForm()
 	return render (request=request, template_name="customer_register.html", context={"customer_register_form":customer_form })
 
-#Contractor Login
+#Customer Login
 def customer_login_request(request):
 	if request.method == "POST":
 		customer_form = AuthenticationForm(request, data=request.POST)
@@ -176,7 +176,7 @@ def customer_login_request(request):
 			if customer is not None:
 				login(request, customer)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("backendcore_api:Contractor_homepage")
+				return redirect("backendcore_api:Customer_homepage")
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
