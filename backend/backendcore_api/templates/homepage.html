@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} Main Homepage {% endblock %}
+{% block content %}
+    
+<h1 class="text-center">Main Homepage</h1>
+
+
+  <div class="text-center">
+    Are you a customer or contractor?
+  </div>
+
+<br>
+<!--Contractor Button--> 
+
+
+<div style="margin: 0 auto; width: 656px; text-align: center;">
+    <button style="margin:5px;"> <a href="contractor/login/">Contractor</a></button>   
+
+    <button style="margin:5px;"> <a href="customer/login/">Customer</a></button>    
+</div>
+
+
+<!--Customer Button-->
+
+
+<div class = "text-xl-center">
+  {% for message in messages %}
+  <p>{{message}}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
+  
