@@ -56,10 +56,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # Internal
     'backendcore_api.apps.BackendcoreConfig',
-    #'backendcore_api',
+    # 'backendcore_api',
     'Contractor',
     'Customer',
 
@@ -77,16 +77,16 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
-    
+
     'DEFAULT_PERMISSION_CLASSES': [
        'rest_framework.permissions.IsAuthenticated'
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication', 
+        'rest_framework.authentication.TokenAuthentication',
     )
-       
-    
+
+
 }
 
 MIDDLEWARE = [
@@ -180,10 +180,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/login'
 
-AUTH_USER_MODEL = 'auth.User'
+# AUTH_USER_MODEL = 'backendcore_api.UserChoice'
 
 
 
 # AUTHENTICATION_BACKENDS = [
-    
+
 # ]
