@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
+{% load static %}
   <!-- image not working -->
-  <img src="backend/static/images/MowIT-logo.png"/>
+  <img src="{% static 'images/MowIT-logo.png' %}" style="height: 75px; width: 75px;  ;"/>
   <!-- ========================== -->
   <div class ="container-fluid">
     <div>
@@ -14,7 +14,7 @@
         {% else %}
         <li class="nav-item">
           <!-- Homepage for App -->
-          <a class="nav-link" style="color:white" href="/login/">MowIT</a>
+          <a class="nav-link" style="color:white; font-weight: 600; font-size: large;" href="/login/">MowIT</a>
         </li>
         {% endif %}
       </ul>

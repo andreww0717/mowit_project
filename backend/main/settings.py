@@ -25,7 +25,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:8000",
     "http://localhost:8000"
 ]
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,23 +63,24 @@ INSTALLED_APPS = [
     'Contractor',
     'Customer',
 
-    #external
+    # external
     'rest_framework',
     'rest_framework.authtoken',
     'crispy_forms',
     'crispy_bootstrap4',
     'corsheaders',
 ]
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4',)
+CRISPY_ALLOWED_TEMPLATE_PACKS = (
+    'bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4',)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#https://www.django-rest-framework.org/
+# https://www.django-rest-framework.org/
 REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
 
     'DEFAULT_PERMISSION_CLASSES': [
-       'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.IsAuthenticated'
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -169,6 +170,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 
 MEDIA_URL = '/images/'
@@ -181,7 +185,6 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/login'
 
 # AUTH_USER_MODEL = 'backendcore_api.UserChoice'
-
 
 
 # AUTHENTICATION_BACKENDS = [
