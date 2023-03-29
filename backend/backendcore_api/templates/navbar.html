@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- image not working -->
+  <img src="backend/static/images/MowIT-logo.png"/>
+  <!-- ========================== -->
+  <div class ="container-fluid">
+    <div>
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <!-- Homepage for App -->
+          <a class="nav-link" style="color:white" href="/home/">MowIT</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <!-- Homepage for App -->
+          <a class="nav-link" style="color:white" href="/login/">MowIT</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="/profile/">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="/logout/">Log Out</a>
+      </li>
+
+      {% else %}
+       <li class="nav-item">
+          <a class="nav-link" style="color:white" href="/login/">Log In</a>
+       </li>
+       <li class="nav-item">
+          <a class="nav-link" style="color:white" href="/register/">Sign Up</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

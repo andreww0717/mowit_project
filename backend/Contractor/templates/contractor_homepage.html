@@ -1,0 +1,19 @@
+{% extends "contractor_base.html" %}
+{% block title %} Contractor Homepage {% endblock %}
+{% block content %}
+    
+<h1 class="text-center">Contractor Homepage</h1>
+<div class = "text-xl-center">
+  {% for message in messages %}
+  <p>{{message}}</p>
+  {% endfor %}
+</div>
+<br>
+<!-- Dashboard -->
+{% include "contractor_dashboard.html" %}
+
+
+
+
+{% endblock %}
+  
