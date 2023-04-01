@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAdminUser
 
 
 # Django Contrib
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -41,8 +41,13 @@ def register_request(request):
 		form = NewUserForm(request.POST)
 		if form.is_valid():
 			user = form.save()
+			# group = Group.objects.get(name='groupname')
+			group = form.cleaned_data['group']
+			group.user_set.add(user)
+			# user.groups.add(group)
+
 			login(request, user)
-			return redirect("backendcore_api:login")
+			return redirect("backendcore_api:homepage")
 	else:
 		form = NewUserForm()
 	return render (request=request, template_name='register.html', context={"register_form":form})
