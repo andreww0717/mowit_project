@@ -2,18 +2,21 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class UserRole(models.Model):
+# class UserRole(models.Model):
 
 
+#   USER_ROLE = [
+#     ('CUSTOMER', 'Customer'),
+#     ('CONTRACTOR', 'Contractor'),
+#   ]
 
-  class role(models.Model):
+#   role = models.CharField(max_length=50, choices=USER_ROLE)
 
-    USER_ROLE = [
-    ('CUSTOMER', 'Customer'),
-    ('CONTRACTOR', 'Contractor'),
-  ]
+#   def is_customer(self):
+#     return self.role.CUSTOMER
 
-    role = models.CharField(max_length=50, choices=USER_ROLE)
+#   def is_contractor(self):
+#     return self.role.CONTRACTOR
 
 
 
