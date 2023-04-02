@@ -7,12 +7,12 @@ from .views import *
 
 def dashboard(request):
 	services = Service.objects.all()
-	customers = Customer.objects.all()
-	
-	context = {'services':services, 'customers':customers}
+	# customers = Customer.objects.all()
 
-	return render(request,'contractor_dashboard.html', context)
-    
+	# context = {'services':services, 'customers':customers}
+
+	# return render(request,'contractor_dashboard.html', context)
+
 
 
 # def services(request):

@@ -1,1 +1,1 @@
-contractors = Contractor.objects.all()
+# contractors = Contractor.objects.all()
