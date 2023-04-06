@@ -2,19 +2,22 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+# class UserRole(models.Model):
 
 
-# class UserChoice(AbstractUser):
+#   USER_ROLE = [
+#     ('CUSTOMER', 'Customer'),
+#     ('CONTRACTOR', 'Contractor'),
+#   ]
 
-#     CUSTOMER = 1
-#     CONTRACTOR = 2
+#   role = models.CharField(max_length=50, choices=USER_ROLE)
 
-#     ROLES_CHOICES = (
-#         (CUSTOMER, 'Customer'),
-#         (CONTRACTOR, 'Contractor'),
-#     )
+#   def is_customer(self):
+#     return self.role.CUSTOMER
 
-#     role = models.PositiveSmallIntegerField(choices=ROLES_CHOICES, blank=True, null=True)
+#   def is_contractor(self):
+#     return self.role.CONTRACTOR
+
 
 
 
