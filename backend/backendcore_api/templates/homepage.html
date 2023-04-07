@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load auth_extras %}
+
 {% block title %} Main Homepage {% endblock %}
 {% block content %}
 
@@ -6,22 +8,25 @@
 {% if user.is_authenticated %}
 <p style="text-align:center">Hello, {{request.user.username}}</p>
 
-  <!-- <div class="text-center">
-    Are you a customer or contractor?
-  </div> -->
+<br>
+<!-- If the user is a contractor, this will show the contractor side of the homepage -->
+{% if request.user|in_group:"Contractor" %}
+    <p style="text-align:center">You Are A Contractor</p>
+    <br>
+    {% include "contractor_dashboard.html" %}
+
+<!-- If the user is a customer, this will show the customer side of the homepage -->
+{% elif request.user|in_group:"Customer" %}
+    <p style="text-align:center">You Are A Customer</p>
+    <br>
+    {% include "customer_dashboard.html" %}
+
+<!-- If the user is not a customer or contractor a message will pop up saying that they are not in a group -->
+{% else %}
+    <p style="text-align:center">Not in a group</p>
+{% endif %}
 
 <br>
-<!--Contractor Button-->
-
-
-<!-- <div style="margin: 0 auto; width: 656px; text-align: center;">
-    <button style="margin:5px;"> <a href="contractor/login/">Contractor</a></button>
-
-    <button style="margin:5px;"> <a href="customer/login/">Customer</a></button>
-</div> -->
-
-
-<!--Customer Button-->
 
 {% else %}
 <div class = "text-xl-center">
