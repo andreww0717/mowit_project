@@ -14,7 +14,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 
 # Django shortcuts
-from django.shortcuts import HttpResponse, render, redirect
+from django.shortcuts import HttpResponse, get_object_or_404, render, redirect
 
 # Django views
 from django.views import generic
@@ -81,6 +81,15 @@ def logout_request(request):
 #Profile
 def profile_request(request):
 	return render(request=request, template_name='profile.html')
+
+#Edit Profile
+def profile_edit(request, user_id):
+	user = get_object_or_404(User, id=user_id)
+	return render(request=request, template_name='profile_edit.html', context={"user": user})
+
+
+
+
 
 #=========================================================================================
 #=============Contractor==================================================================
