@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block title %} Profile {% endblock %}
+{% block title %} Edit Profile {% endblock %}
 {% block content %}
 <div class= "text-center">
-    <h1>Profile</h1>
+    <h1>Edit Profile</h1>
     <p style="text-align:center">Hello, {{request.user.username}}</p>
     {% comment %} <div>
         {% if user.userprofile.profile_pic %}
@@ -24,9 +24,7 @@
         <div class='info'>
             <p><strong>Email:</strong> {{ request.user.email }}</p>
         </div>
-        <form action="{% url 'profile_edit' request.user.id %}" method="get">
-            <button type="submit" class=edit>Edit Account Information</button>
-        </form>
+        <button type="button" class="button" onclick="window.location.href='/home/'">Edit Account Information</button>
     </div>
 </div>
 
