@@ -1,5 +1,7 @@
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'backendcore_api'
 urlpatterns = [
@@ -14,7 +16,7 @@ urlpatterns = [
     path('login/', views.login_request, name='login'),
     path('logout/', views.logout_request, name='logout'),
     path('profile/', views.profile_request, name='profile'),
-    path('profile/edit/', views.profile_edit, name='profile_edit'),
+    # path('profile/edit/', views.profile_edit, name='profile_edit'),
 
     # Contractor path
     # path('contractor/', include('Contractor.urls')),
@@ -32,7 +34,7 @@ urlpatterns = [
     # #path('home/customer/login/', include('Customer.urls', namespace='Customer_login')),
     # path('customer/login', views.customer_login_request, name='Customer_login'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

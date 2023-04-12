@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAdminUser
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Django shortcuts
@@ -27,7 +28,7 @@ from django.views.generic import DetailView
 # from Contractor.forms import NewContractorForm
 from Contractor.models import *
 
-from .forms import NewUserForm
+from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
 
@@ -79,13 +80,33 @@ def logout_request(request):
     return redirect('backendcore_api:login')
 
 #Profile
+@login_required
 def profile_request(request):
-	return render(request=request, template_name='profile.html')
+  if request.method == 'POST':
+    updateform = UserUpdateForm(request.POST, instance=request.user)
+    profileform = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+    if updateform.is_valid() and profileform.is_valid():
+      updateform.save()
+      profileform.save()
+      # messages.success(request, "Your Account Has Been Updated!")
+      return redirect("backendcore_api:profile")
+
+  else:
+    updateform = UserUpdateForm(instance=request.user)
+    profileform = ProfileUpdateForm(instance=request.user.profile)
+
+  context = {
+		'updateform': updateform,
+  	'profileform': profileform
+	}
+
+  return render(request, 'profile.html', context)
+	# return render(request=request, template_name='profile.html')
 
 #Edit Profile
-def profile_edit(request, user_id):
-	user = get_object_or_404(User, id=user_id)
-	return render(request=request, template_name='profile_edit.html', context={"user": user})
+# def profile_edit(request, user_id):
+# 	user = get_object_or_404(User, id=user_id)
+# 	return render(request=request, template_name='profile_edit.html', context={"user": user})
 
 
 

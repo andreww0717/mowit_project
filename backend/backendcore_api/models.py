@@ -1,23 +1,26 @@
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django.db import models
+from PIL import Image
 
-# class UserRole(models.Model):
+class Profile(models.Model):
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
+  def __str__(self):
+    return self.user.username
 
-#   USER_ROLE = [
-#     ('CUSTOMER', 'Customer'),
-#     ('CONTRACTOR', 'Contractor'),
-#   ]
+  # Override the save method of the model
+  def save(self, *args, **kwargs):
+      super(Profile, self).save(*args, **kwargs)
 
-#   role = models.CharField(max_length=50, choices=USER_ROLE)
+      img = Image.open(self.image.path) # Open image
 
-#   def is_customer(self):
-#     return self.role.CUSTOMER
-
-#   def is_contractor(self):
-#     return self.role.CONTRACTOR
-
+      # resize image
+      if img.height > 300 or img.width > 300:
+          output_size = (300, 300)
+          img.thumbnail(output_size) # Resize image
+          img.save(self.image.path) # Save it again and override the larger image
 
 
 
