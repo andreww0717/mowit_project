@@ -1,9 +1,104 @@
 {% extends "base.html" %}
 {% block title %} Profile {% endblock %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-<h1 class="text-center">Profile</h1>
-<p style="text-align:center">Hello, {{request.user.username}}</p>
+
+<div class="content-section">
+    <div class="media">
+      <img
+        class="rounded-circle account-img"
+        src="{{ user.profile.image.url }}"
+      />
+      <div class="media-body">
+        <h2 class="account-heading">{{ user.username }}</h2>
+        <p class="text-secondary">{{ user.email }}</p>
+      </div>
+    </div>
+    <!-- FORM HERE -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Profile Info</legend>
+          {{ updateform|crispy }}
+          <!-- User form -->
+          {{ profileform|crispy }}
+          <!-- Profile form -->
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+      </form>
+  </div>
+
+<!-- <div class= "text-center">
+    <h1>Profile</h1>
+    <p style="text-align:center">Hello, {{request.user.username}}</p>
+    {% comment %} <div>
+        {% if user.userprofile.profile_pic %}
+            <img src="{{ user.userprofile.profile_pic.url }}" class="profile-picture" alt="{{ user.username }}'s profile picture">
+        {% else %}
+        <img src="{{ '../media/profile_pics/profilepicture.png' }}" class="profile-picture" alt="default profile picture">
+        {% endif %}
+    </div> {% endcomment %}
+    <div class="account-info">
+        <div class='info'>
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+        </div>
+        <div class='info'>
+            <p><strong>First Name:</strong> {{ request.user.first_name }}</p>
+        </div>
+        <div class='info'>
+            <p><strong>Last Name:</strong> {{ request.user.last_name }}</p>
+        </div>
+        <div class='info'>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+        </div>
+
+    </div>
+</div>
+
+<style>
+
+    .account-info {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      display: flex;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+      border: 3px solid #FFFFFF;
+    }
+
+    strong{
+        font-size: 35px;
+    }
+
+    .info{
+      color: #000000;
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .button{
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        border: 3px solid #000000;
+        display:block;
+        margin:0 auto;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 2px 2px 2px #888888;
+    }
+
+</style> -->
 
 
 
