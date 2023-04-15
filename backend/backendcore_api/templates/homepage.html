@@ -6,6 +6,9 @@
 
 <br>
 <h1 class="text-center">Welcome to MowIT</h1>
+<!-- Main homepage with information about the app -->
+<!-- This page will show up when user has not log in -->
+
 {% if user.is_authenticated %}
 <p style="text-align:center">Hello, {{request.user.username}}</p>
 
