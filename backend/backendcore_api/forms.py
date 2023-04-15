@@ -42,6 +42,10 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['image']
 
 class UserInfoUpdateForm(forms.ModelForm):
+
+  phone_number = forms.CharField(max_length=10, required=False)
+  address = forms.CharField(max_length=100, required=False)
+  zipcode = forms.CharField(max_length=5, required=False)
   class Meta:
         model = UserInfo
         fields = ['phone_number', 'address', 'zipcode']
