@@ -24,3 +24,14 @@ class Profile(models.Model):
 
 
 
+class UserInfo(models.Model):
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  phone_number = models.CharField(max_length=10)
+  address = models.CharField(max_length=100)
+  zipcode = models.CharField(max_length=5)
+
+  def __str__(self):
+    return self.user.username
+
+  def save(self, *args, **kwargs):
+      super(UserInfo, self).save(*args, **kwargs)

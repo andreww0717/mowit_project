@@ -15,17 +15,25 @@
         <p class="text-secondary">{{ user.email }}</p>
       </div>
     </div>
-    <!-- FORM HERE -->
     <div>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Profile Info</legend>
+          <legend class="border-bottom mb-4" style="font-weight: bold">Profile Info</legend>
           {{ updateform|crispy }}
-          <!-- User form -->
-          {{ profileform|crispy }}
-          <!-- Profile form -->
         </fieldset>
+
+
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4" style="font-weight: bold">Personal Info</legend>
+          {{ infoupdateform|crispy }}
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4" style="font-weight: bold">Change Image</legend>
+          {{ profileform|crispy }}
+        </fieldset>
+
         <div class="form-group">
           <button class="btn btn-outline-info" type="submit">Update</button>
         </div>

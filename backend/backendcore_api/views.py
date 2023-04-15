@@ -28,7 +28,7 @@ from django.views.generic import DetailView
 # from Contractor.forms import NewContractorForm
 from Contractor.models import *
 
-from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm
+from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, UserInfoUpdateForm
 
 # Create your views here.
 
@@ -85,19 +85,23 @@ def profile_request(request):
   if request.method == 'POST':
     updateform = UserUpdateForm(request.POST, instance=request.user)
     profileform = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-    if updateform.is_valid() and profileform.is_valid():
+    infoupdateform = UserInfoUpdateForm(request.POST, instance=request.user.userinfo)
+    if updateform.is_valid() and profileform.is_valid() and infoupdateform.is_valid():
       updateform.save()
       profileform.save()
+      infoupdateform.save()
       # messages.success(request, "Your Account Has Been Updated!")
       return redirect("backendcore_api:profile")
 
   else:
     updateform = UserUpdateForm(instance=request.user)
     profileform = ProfileUpdateForm(instance=request.user.profile)
+    infoupdateform = UserInfoUpdateForm(instance=request.user)
 
   context = {
 		'updateform': updateform,
-  	'profileform': profileform
+  	'profileform': profileform,
+   	'infoupdateform': infoupdateform
 	}
 
   return render(request, 'profile.html', context)
