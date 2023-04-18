@@ -4,7 +4,9 @@
 {% block title %} Main Homepage {% endblock %}
 {% block content %}
 
-<h1 class="text-center">Main Homepage</h1>
+<br>
+<h1 class="text-center">Welcome to MowIT</h1>
+
 {% if user.is_authenticated %}
 <p style="text-align:center">Hello, {{request.user.username}}</p>
 
@@ -29,6 +31,9 @@
 <br>
 
 {% else %}
+<!-- Main homepage with information about the app -->
+<!-- This page will show up when user has not log in -->
+{%include "main_homepage.html"%}
 <div class = "text-xl-center">
   {% for message in messages %}
   <p>{{message}}</p>

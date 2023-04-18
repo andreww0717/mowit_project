@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   {% load static %}
-  
+
   <img src="{% static 'images/Logo-cropped.png' %}" class = "logo" alt="MowIT">
-  
+
   <div class ="container-fluid">
     <div>
       <ul class="navbar-nav">
@@ -13,8 +13,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <!-- Homepage for App -->
-          <a class="nav-link" style="color:white" href="/login/">MowIT</a>
+          <a class="nav-link" style="color:white" href="/home/">MowIT</a>
         </li>
         {% endif %}
       </ul>
@@ -30,7 +29,7 @@
 
       {% else %}
        <li class="nav-item">
-          <a class="nav-link" style="color:white" href="/login/">Log In</a>
+          <a class="nav-link" style="color:white" href="/login/">Sign In</a>
        </li>
        <li class="nav-item">
           <a class="nav-link" style="color:white" href="/register/">Sign Up</a>

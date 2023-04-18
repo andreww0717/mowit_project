@@ -7,7 +7,7 @@ app_name = 'backendcore_api'
 urlpatterns = [
 
     # If user not logged in
-    path('', views.login_request, name='login'),
+    path('', views.homepage, name='homepage'),
 
     # Registration
     # path('', views.homepage, name='homepage'),

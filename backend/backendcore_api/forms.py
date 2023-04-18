@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, Group
-from .models import Profile
+from .models import Profile, UserInfo
 
 
 
@@ -22,11 +22,6 @@ class NewUserForm(UserCreationForm):
 
 
 	def save(self, commit=True):
-
-		# user.first_name = self.cleaned_data['first_name']
-		# user.last_name = self.cleaned_data['last_name']
-		# user.email = self.cleaned_data['email']
-
 		user = super(NewUserForm, self).save(commit=False)
 
 		if commit:
@@ -45,3 +40,12 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+
+class UserInfoUpdateForm(forms.ModelForm):
+
+  phone_number = forms.CharField(max_length=10, required=False)
+  address = forms.CharField(max_length=100, required=False)
+  zipcode = forms.CharField(max_length=5, required=False)
+  class Meta:
+        model = UserInfo
+        fields = ['phone_number', 'address', 'zipcode']
