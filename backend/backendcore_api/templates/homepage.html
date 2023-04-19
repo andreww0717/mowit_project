@@ -28,6 +28,9 @@
     <p style="text-align:center">Not in a group</p>
 {% endif %}
 
+{% if user.is_superuser %}
+    <button type="button" class="center"  onclick="location.href='/admin/'">Admin Page</button>
+{% endif %}
 <br>
 
 {% else %}
