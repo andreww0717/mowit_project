@@ -7,3 +7,4 @@ from .models import Profile, UserInfo
 # Registered Users with Profile
 admin.site.register(Profile)
 admin.site.register(UserInfo)
+# admin.site.register(RatingSystem)

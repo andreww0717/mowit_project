@@ -17,6 +17,7 @@
         <p class="text-secondary">{{ user.email }}</p>
       </div>
 
+
 <br>
     <div style="position: absolute; top: 80px; left: 500px; ">
     <form method="POST" enctype="multipart/form-data">
@@ -26,7 +27,7 @@
           {{ updateform|crispy }}
         </fieldset>
 
-        <fieldset class="form-group">
+        <fieldset class="form-group" >
           <legend class="border-bottom mb-4" style="font-weight: bold">Personal Info</legend>
           {{ infoupdateform|crispy }}
         </fieldset>

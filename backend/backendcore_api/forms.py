@@ -51,3 +51,5 @@ class UserInfoUpdateForm(forms.ModelForm):
   class Meta:
         model = User
         fields = ['phone_number', 'address', 'zipcode']
+
+
