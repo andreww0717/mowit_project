@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'corsheaders',
+    'star_ratings',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'bootstrap4',)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
