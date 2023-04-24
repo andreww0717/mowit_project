@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mowit_app/profile_view.dart';
-import 'package:mowit_app/homepage.dart';
+import 'package:flutterfrontend/profile_view.dart';
+import 'package:flutterfrontend/homepage.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);

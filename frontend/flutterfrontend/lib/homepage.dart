@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mowit_app/main.dart';
-import 'package:mowit_app/profile_view.dart';
-import 'package:mowit_app/settings.dart';
+import 'package:flutterfrontend/main.dart';
+import 'package:flutterfrontend/profile_view.dart';
+import 'package:flutterfrontend/settings.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});

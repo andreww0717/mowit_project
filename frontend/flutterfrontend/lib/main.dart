@@ -2,11 +2,11 @@
 // ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mowit_app/login.dart';
-import 'package:mowit_app/profile_edit.dart';
-import 'package:mowit_app/profile_view.dart';
-import 'package:mowit_app/homepage.dart';
-import 'package:mowit_app/settings.dart';
+import 'package:flutterfrontend/login.dart';
+import 'package:flutterfrontend/profile_edit.dart';
+import 'package:flutterfrontend/profile_view.dart';
+import 'package:flutterfrontend/homepage.dart';
+import 'package:flutterfrontend/settings.dart';
 
 void main() {
   runApp(const MyApp());

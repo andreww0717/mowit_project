@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:mowit_app/main2.dart';
-import 'package:mowit_app/profile_edit.dart';
+import 'package:flutterfrontend/main2.dart';
+import 'package:flutterfrontend/profile_edit.dart';
 
-import 'package:mowit_app/settings.dart';
+import 'package:flutterfrontend/settings.dart';
 
 class ProfileView2 extends StatefulWidget {
   const ProfileView2({super.key});

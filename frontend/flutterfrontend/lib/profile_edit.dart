@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mowit_app/main.dart';
-import 'package:mowit_app/profile_view.dart';
+import 'package:flutterfrontend/main.dart';
+import 'package:flutterfrontend/profile_view.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});

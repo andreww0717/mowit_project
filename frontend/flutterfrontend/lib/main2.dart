@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mowit_app/login.dart';
-import 'package:mowit_app/profile_edit.dart';
+import 'package:flutterfrontend/login.dart';
+import 'package:flutterfrontend/profile_edit.dart';
 
-import 'package:mowit_app/homepage.dart';
-import 'package:mowit_app/profile_view2.dart';
-import 'package:mowit_app/settings.dart';
+import 'package:flutterfrontend/homepage.dart';
+import 'package:flutterfrontend/profile_view2.dart';
+import 'package:flutterfrontend/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -281,15 +281,15 @@ class Page1 extends StatelessWidget {
                 SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
-                
+
               ],
-              
-              
+
+
             ),
             SizedBox(
                     height: 20, // Specify the height of the space between the Text widgets
                     ),
-            
+
 //Next Customer
             Row(
               children: [
@@ -360,10 +360,10 @@ class Page1 extends StatelessWidget {
                 SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
-                
+
               ],
-              
-              
+
+
             ),
             //Next Customer
 
@@ -440,10 +440,10 @@ class Page1 extends StatelessWidget {
                 SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
-                
+
               ],
-              
-              
+
+
             ),
 
             SizedBox(
@@ -519,10 +519,10 @@ class Page1 extends StatelessWidget {
                 SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
-                
+
               ],
-              
-              
+
+
             ),
 
             SizedBox(
@@ -532,7 +532,7 @@ class Page1 extends StatelessWidget {
                                     SizedBox(
                     height: 20, // Specify the height of the space between the Text widgets
                     ),
-//Next Company       
+//Next Company
  SizedBox(
                   width: 200.0,
                   height: 50.0,
@@ -578,7 +578,7 @@ SizedBox(
                     child: const Text("Post a Promo Deals"),
                   ),
                 )
-            
+
           ],
         ),
       ),
@@ -619,11 +619,11 @@ class Page3 extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(top: 25),
             ),
-            
+
             CircleAvatar(
               radius: 75,
               backgroundImage: AssetImage('images/mikelogo.png'),
-              
+
             ),
             Container(
               padding: EdgeInsets.only(top: 20),
