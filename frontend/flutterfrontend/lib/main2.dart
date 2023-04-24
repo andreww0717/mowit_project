@@ -1,26 +1,26 @@
-
 // ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
 import 'package:mowit_app/profile_edit.dart';
-import 'package:mowit_app/profile_view.dart';
+
 import 'package:mowit_app/homepage.dart';
+import 'package:mowit_app/profile_view2.dart';
 import 'package:mowit_app/settings.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-String firstName = "Andrew";
-String lastName = "Winland";
+String firstName2 = "Mikes's";
+String lastName2 = "Lawn Care";
 
 String getFirstName() {
-  return firstName;
+  return firstName2;
 }
 
 String getLastName() {
-  return lastName;
+  return lastName2;
 }
 
 
@@ -43,14 +43,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage2 extends StatefulWidget {
+  const HomePage2({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState2 createState() => _HomePageState2();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState2 extends State<HomePage2> {
   int pageIndex = 0;
 
   final pages = [
@@ -105,7 +105,8 @@ class _HomePageState extends State<HomePage> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const HomePage();
+                    //REDIRECT TO HOME
+                    return const HomePage2();
                   },
                 ),
               );
@@ -120,7 +121,8 @@ class _HomePageState extends State<HomePage> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const ProfileView();
+                    //REDIRECT TO PROFILE VIEW
+                    return const ProfileView2();
                   },
                 ),
               );
@@ -177,11 +179,11 @@ class Page1 extends StatelessWidget {
           ),
         ),
         Text(
-          "$firstName $lastName",
+          "$firstName2 $lastName2",
           style: TextStyle(
             fontFamily: 'Berkshire Swash',
-            color: Colors.red,
-            fontSize: 50,
+            color: Color.fromRGBO(244, 67, 54, 1),
+            fontSize: 30,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -190,7 +192,7 @@ class Page1 extends StatelessWidget {
     SizedBox(width: 10),
     CircleAvatar(
       radius: 50,
-      backgroundImage: AssetImage('images/profile picture.jpg'),
+      backgroundImage: AssetImage('images/mikelogo.png'),
     ),
   ],
 ),
@@ -200,21 +202,23 @@ class Page1 extends StatelessWidget {
             Align(
               alignment: Alignment(-1,0),
               child: Text(
-                "Recommended based on Zip Code:",
+                "Recommended Customers based on Zip Code:",
                 style: TextStyle(
                   fontFamily: 'Berkshire Swash',
                   fontSize: 40,
                 ),
               ),
             ),
-
+            Container(
+              padding: EdgeInsets.only(top: 10),
+            ),
             Row(
               children: [
                 //Start of Company Widgets
                 Column(
                   children: const [
                     Text(
-                      "Mike's Lawn Care",
+                      "Myles Joseph",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 28,
@@ -232,7 +236,7 @@ class Page1 extends StatelessWidget {
                     ),
 
                     Text(
-                      "Serives Offered: Lawn Cutting \$100, Tree Removal \$100",
+                      "Serives Needed: Lawn Cutting, Tree Removal",
                       style: TextStyle(
                         color: Color.fromARGB(255, 161, 161, 161),
                         fontSize: 20,
@@ -240,10 +244,10 @@ class Page1 extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Serives Offered: Weed Removal \$100, Pest Control \$150",
+                      "Estimated Payout:\$350",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 20,
+                        color: Color.fromARGB(255, 255, 70, 70),
+                        fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
                     )
@@ -261,248 +265,39 @@ class Page1 extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return const HomePage();
+                            return const HomePage2();
                           },
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
                     ),
-                    child: const Text("BOOK"),
-                  ),
-                ),
-                //End of Compant Widgets
-
-                //End of Company Widgets
-
-              ],
-            ),
-            SizedBox(
-                    height: 20, // Specify the height of the space between the Text widgets
-                    ),
-//Next Company
-Row(
-
-              children: [
-                //Start of Company Widgets
-                Column(
-                  children: const [
-                    Text(
-                      "John's Mowing and Company",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    Text(
-                      "Kennesaw, Georgia - Around 5 miles Away",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 23,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    Text(
-                      "Serives Offered: Lawn Cutting \$100 minimum (Size of lawn is facotred)",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 75),
-                ),
-                SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
+                    child: const Text("Accept Work"),
                   ),
                 ),
                 //End of Compant Widgets
                 SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
-                //End of Company Widgets
-
+                
               ],
+              
+              
             ),
-
-
-
             SizedBox(
                     height: 20, // Specify the height of the space between the Text widgets
                     ),
-//Next Company
-Row(
-
-              children: [
-                //Start of Company Widgets
-                Column(
-                  children: const [
-                    Text(
-                      "BIG RYAN'S TREES",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    Text(
-                      "Maietta, Georgia - Around 8 miles Away",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 23,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    Text(
-                      "Serives Offered: Tree Removal \$300 minimum",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 75),
-                ),
-                SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
-                  ),
-                ),
-                //End of Compant Widgets
-                SizedBox(
-                    width: 20, // Specify the height of the space between the Text widgets
-                    ),
-                //End of Company Widgets
-
-              ],
-            ),
-
-
-            SizedBox(
-                    height: 20, // Specify the height of the space between the Text widgets
-                    ),
-//Next Company
-Row(
-
-              children: [
-                //Start of Company Widgets
-                Column(
-                  children: const [
-                    Text(
-                      "Charlie Deets",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    Text(
-                      "Maietta, Georgia - Around 15 miles Away",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 23,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    Text(
-                      "Serives Offered: Lawn Care, Complete Serives \$250",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 75),
-                ),
-                SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
-                  ),
-                ),
-                //End of Compant Widgets
-
-                //End of Company Widgets
-
-              ],
-            ),
-SizedBox(
-                    height: 20, // Specify the height of the space between the Text widgets
-                    ),
+            
+//Next Customer
             Row(
-
               children: [
                 //Start of Company Widgets
                 Column(
                   children: const [
                     Text(
-                      "Gwinnett Landscaping Co.",
+                      "James Nguyen",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 28,
@@ -511,7 +306,7 @@ SizedBox(
                     ),
 
                     Text(
-                      "Tucker, Georgia - Around 23 miles Away",
+                      "Atlanta, Georgia - Around 6 miles Away",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 23,
@@ -520,10 +315,18 @@ SizedBox(
                     ),
 
                     Text(
-                      "Serives Offered: Total Lanscaping Package - \$300",
+                      "Serives Needed: Lawn Cutting, Weed Removal, Tree Removal",
                       style: TextStyle(
                         color: Color.fromARGB(255, 161, 161, 161),
                         fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "Estimated Payout:\$400",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 70, 70),
+                        fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
                     )
@@ -541,25 +344,186 @@ SizedBox(
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return const HomePage();
+                            return const HomePage2();
                           },
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
                     ),
-                    child: const Text("BOOK"),
+                    child: const Text("Accept Work"),
                   ),
                 ),
                 //End of Compant Widgets
-
-                //End of Company Widgets
-
+                SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                
               ],
+              
+              
+            ),
+            //Next Customer
+
+            SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+
+            Row(
+              children: [
+                //Start of Company Widgets
+                Column(
+                  children: const [
+                    Text(
+                      "Caleb Potter",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Lawrenceville, Georgia - Around 12 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Needed: Weed Removal, Pinecone Removal",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "Estimated Payout:\$200",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 70, 70),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 80.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage2();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
+                    ),
+                    child: const Text("Accept Work"),
+                  ),
+                ),
+                //End of Compant Widgets
+                SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                
+              ],
+              
+              
             ),
 
+            SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+
+            Row(
+              children: [
+                //Start of Company Widgets
+                Column(
+                  children: const [
+                    Text(
+                      "Johnny Favors",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Atlanta, Georgia - Around 15 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Needed: Pinecone Removal",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "Estimated Payout:\$150",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 70, 70),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 80.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage2();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
+                    ),
+                    child: const Text("Accept Work"),
+                  ),
+                ),
+                //End of Compant Widgets
+                SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                
+              ],
+              
+              
+            ),
 
             SizedBox(
                     height: 20, // Specify the height of the space between the Text widgets
@@ -568,7 +532,7 @@ SizedBox(
                                     SizedBox(
                     height: 20, // Specify the height of the space between the Text widgets
                     ),
-//Next Company
+//Next Company       
  SizedBox(
                   width: 200.0,
                   height: 50.0,
@@ -577,7 +541,7 @@ SizedBox(
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return const HomePage();
+                            return const HomePage2();
                           },
                         ),
                       );
@@ -586,7 +550,7 @@ SizedBox(
                       foregroundColor: Colors.white,
                       backgroundColor: Color.fromARGB(255, 255, 73, 73),
                     ),
-                    child: const Text("Search By Zip Code"),
+                    child: const Text("Post a New Job"),
                   ),
                 ),
 
@@ -602,7 +566,7 @@ SizedBox(
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return const HomePage();
+                            return const HomePage2();
                           },
                         ),
                       );
@@ -611,10 +575,10 @@ SizedBox(
                       foregroundColor: Colors.white,
                       backgroundColor: Color.fromARGB(255, 255, 73, 73),
                     ),
-                    child: const Text("Search by Job"),
+                    child: const Text("Post a Promo Deals"),
                   ),
                 )
-
+            
           ],
         ),
       ),
@@ -655,21 +619,35 @@ class Page3 extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(top: 25),
             ),
+            
             CircleAvatar(
               radius: 75,
-              backgroundImage: AssetImage('images/profile picture.jpg'),
-
+              backgroundImage: AssetImage('images/mikelogo.png'),
+              
             ),
             Container(
               padding: EdgeInsets.only(top: 20),
             ),
             Text(
-              "$firstName $lastName",
+              "$firstName2 $lastName2",
               style: TextStyle(
                 fontFamily: 'Berkshire Swash',
                 color: Colors.red,
                 fontSize: 25,
                 fontWeight: FontWeight.w500,
+              ),
+            ),
+            Icon(
+              Icons.star,
+              color: Colors.yellow,
+            ),
+            SizedBox(width: 5),
+              Text(
+                 "5", // replace with the actual rating value
+              style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
               ),
             ),
             Container(
@@ -685,7 +663,7 @@ class Page3 extends StatelessWidget {
               ),
             ),
             Text(
-              firstName,
+              firstName2,
               style: TextStyle(
                 fontFamily: 'Berkshire Swash',
                 color: Colors.red,
@@ -706,7 +684,7 @@ class Page3 extends StatelessWidget {
               ),
             ),
             Text(
-              lastName,
+              lastName2,
               style: TextStyle(
                 fontFamily: 'Berkshire Swash',
                 color: Colors.red,
@@ -727,7 +705,7 @@ class Page3 extends StatelessWidget {
               ),
             ),
             Text(
-              "770-123-4567",
+              "404-256-6238",
               style: TextStyle(
                 fontFamily: 'Berkshire Swash',
                 color: Colors.red,
@@ -748,7 +726,7 @@ class Page3 extends StatelessWidget {
               ),
             ),
             Text(
-              "AndrewsEmail@gmail.com",
+              "mikeslawncare@gmail.com",
               style: TextStyle(
                 fontFamily: 'Berkshire Swash',
                 color: Colors.red,
@@ -827,242 +805,3 @@ class Page4 extends StatelessWidget {
     );
   }
 }
-=======
-// import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MowIT',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('MowIT'),
-      ),
-
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'images/logo.jpg',
-              width: 150.0,
-              height: 150.0,
-            ),
-            SizedBox(height: 32),
-            Text(
-              'Please sign in or sign up',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the sign-in screen
-              },
-              child: Text('Sign In'),
-            ),
-            SizedBox(height: 16),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NameInputScreen()),
-                );
-              },
-              child: Text('Sign Up'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class NameInputScreen extends StatefulWidget {
-  @override
-  _NameInputScreenState createState() => _NameInputScreenState();
-}
-
-class _NameInputScreenState extends State<NameInputScreen> {
-  final _nameController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Enter Your Name'),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  hintText: 'Enter your name',
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  final name = _nameController.text;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NameDisplayScreen(name: name),
-                    ),
-                  );
-                },
-                child: Text('Submit'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-class NameDisplayScreen extends StatelessWidget {
-  final String name;
-
-  const NameDisplayScreen({Key? key, required this.name}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Name Display'),
-      ),
-      body: Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Hello, $name!',
-                  style: TextStyle(fontSize: 24),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditAccountScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey[200],
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                  'Five Stars',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Icon(
-                  Icons.star,
-                  size: 16,
-                  color: Colors.yellow,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EditAccountScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Account'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'First Name:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Last Name:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Phone Number:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Email:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Password:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Save Changes'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
