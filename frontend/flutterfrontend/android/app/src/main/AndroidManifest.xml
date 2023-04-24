@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutterfrontend">
+    package="com.example.mowit_app">
    <application
-        android:label="flutterfrontend"
+        android:label="mowit_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
