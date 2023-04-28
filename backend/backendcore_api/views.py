@@ -25,8 +25,7 @@ from django.views.generic import DetailView
 # from .models import RatingSystem
 
 # Contractor
-# from Contractor.forms import NewContractorForm
-from Contractor.models import *
+from Contractor.models import Service
 
 from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, UserInfoUpdateForm
 
@@ -106,6 +105,11 @@ def profile_request(request):
 
   return render(request, 'profile.html', context)
 	# return render(request=request, template_name='profile.html')
+
+#Show data in contractor dashboard
+def show_service(request):
+  all_service = Service.objects.all()
+  return render(request, 'contractor_dashboard.html', {'services':all_service})
 
 #Edit Profile
 # def profile_edit(request, user_id):

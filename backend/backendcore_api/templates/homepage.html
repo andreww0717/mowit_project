@@ -6,20 +6,18 @@
 
 <br>
 <h1 class="text-center">Welcome to MowIT</h1>
-
 {% if user.is_authenticated %}
 <p style="text-align:center">Hello, {{request.user.username}}</p>
 
-<br>
 <!-- If the user is a contractor, this will show the contractor side of the homepage -->
 {% if request.user|in_group:"Contractor" %}
-    <p style="text-align:center">You Are A Contractor</p>
+    <p style="text-align:center">You are signed in as a Contractor</p>
     <br>
     {% include "contractor_dashboard.html" %}
 
 <!-- If the user is a customer, this will show the customer side of the homepage -->
 {% elif request.user|in_group:"Customer" %}
-    <p style="text-align:center">You Are A Customer</p>
+    <p style="text-align:center">You are signed in as a Customer</p>
     <br>
     {% include "customer_dashboard.html" %}
 
@@ -29,9 +27,15 @@
 {% endif %}
 
 {% if user.is_superuser %}
-    <button type="button" class="center"  onclick="location.href='/admin/'">Admin Page</button>
+    <p style="text-align:center">You are signed in as a Admin</p>
+    <p style="text-align:center">To go to the admin dashboard press the button below</p>
+    <div style="display: flex; justify-content: center; ">
+     <button type="button" class="center"  onclick="location.href='/admin/'">Admin Page</button>
+    </div>
 {% endif %}
+</div>
 <br>
+
 
 {% else %}
 <!-- Main homepage with information about the app -->

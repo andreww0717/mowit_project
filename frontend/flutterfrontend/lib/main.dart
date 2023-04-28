@@ -827,71 +827,71 @@ class Page4 extends StatelessWidget {
     );
   }
 }
-=======
-// import 'package:flutter/material.dart';
+// =======
+// // import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MowIT',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: HomePage(),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'MowIT',
+//       theme: ThemeData(
+//         primarySwatch: Colors.red,
+//       ),
+//       home: HomePage(),
+//     );
+//   }
+// }
 
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('MowIT'),
-      ),
+// class HomePage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('MowIT'),
+//       ),
 
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'images/logo.jpg',
-              width: 150.0,
-              height: 150.0,
-            ),
-            SizedBox(height: 32),
-            Text(
-              'Please sign in or sign up',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the sign-in screen
-              },
-              child: Text('Sign In'),
-            ),
-            SizedBox(height: 16),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NameInputScreen()),
-                );
-              },
-              child: Text('Sign Up'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Image.asset(
+//               'images/logo.jpg',
+//               width: 150.0,
+//               height: 150.0,
+//             ),
+//             SizedBox(height: 32),
+//             Text(
+//               'Please sign in or sign up',
+//               style: TextStyle(fontSize: 20),
+//             ),
+//             SizedBox(height: 32),
+//             ElevatedButton(
+//               onPressed: () {
+//                 // Navigate to the sign-in screen
+//               },
+//               child: Text('Sign In'),
+//             ),
+//             SizedBox(height: 16),
+//             OutlinedButton(
+//               onPressed: () {
+//                 Navigator.push(
+//                   context,
+//                   MaterialPageRoute(builder: (context) => NameInputScreen()),
+//                 );
+//               },
+//               child: Text('Sign Up'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class NameInputScreen extends StatefulWidget {
   @override
