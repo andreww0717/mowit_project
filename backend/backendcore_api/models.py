@@ -35,9 +35,9 @@ class UserInfo(models.Model):
   def save(self, *args, **kwargs):
       super(UserInfo, self).save(*args, **kwargs)
 
-# class RatingSystem(models.Model):
-#   user = models.ForeignKey(User, on_delete=models.CASCADE)
-#   ratings = models.IntegerField(default=0)
+class RatingSystem(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  ratings = models.IntegerField(default=0)
 
-#   def __str__(self):
-#     return self.user.username
+  def __str__(self):
+    return self.user.username

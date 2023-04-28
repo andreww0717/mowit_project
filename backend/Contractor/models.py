@@ -11,6 +11,7 @@ class Tag(models.Model):
 
 class Service(models.Model):
 
+  contractors = models.ManyToManyField(User)
   name = models.CharField(max_length=200, null=True)
   price = models.FloatField(null=True)
   description = models.CharField(max_length=200, null=True)
