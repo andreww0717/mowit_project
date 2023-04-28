@@ -108,7 +108,7 @@ def profile_request(request):
 
 #Show data in contractor dashboard
 def show_service(request):
-  all_service = Service.objects.services
+  all_service = Service.objects.all()
   return render(request, 'contractor_dashboard.html', {'services':all_service})
 
 #Edit Profile
