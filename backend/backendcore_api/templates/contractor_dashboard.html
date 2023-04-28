@@ -5,18 +5,15 @@
     <hr>
 
     <div class ="card card-body">
-      <a class="btn btn-primary btn-sm btn-block" href="">Create Services</a>
+      <a class="btn btn-primary btn-sm btn-block" href="/contractor/serviceregistration">Create Services</a>
       <table class="table">
           <tr>
             <th>Service</th>
             <th>Price</th>
           </tr>
        <!-- Table not showing up -->
-        {% for service in services %}
-          <tr>
-            <td>{{service.name}}</td>
-            <td>{{service.price}}</td>
-          </tr>     
+        {% for item in services %}
+            {{item.name}} {{item.price}}
         {% endfor %}
       </table>
     </div>
@@ -35,7 +32,7 @@
             <tr>
               <td>{{customer.firstname}}</td>
               <td>{{customer.phone}}</td>
-            </tr>     
+            </tr>
           {% endfor %}
       </table>
     </div>

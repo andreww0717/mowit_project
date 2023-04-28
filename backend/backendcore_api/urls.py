@@ -18,12 +18,12 @@ urlpatterns = [
     path('profile/', views.profile_request, name='profile'),
     # path('profile/edit/', views.profile_edit, name='profile_edit'),
 
+
     # Profile API
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
-
-    # Contractor path
-    # path('contractor/', include('Contractor.urls')),
+    # path('serviceregistration/', views.service_register_request, name='serviceregistration')
+    path('contractor/', include('Contractor.urls')),
     # path('contractor/', include('django.contrib.auth.urls')),
     # path('home/contractor/', include('Contractor.urls')),
     # path('home/contractor/homepage/', views.contractor_homepage, name='Contractor_homepage'),
