@@ -11,45 +11,49 @@
 {% block content %}
 
 <br>
+<div style="display: flex;">
 
-<div class="content-section">
-    <div class="media">
-      <img
-        class="rounded-circle account-img"
-        src="{{ user.profile.image.url }}"
-      />
-    </div>
-
-      <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{ user.email }}</p>
-      </div>
-
-
-<br>
-    <div style="position: absolute; top: 80px; left: 500px; ">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <fieldset class="form-group">
-          <legend class="border-bottom mb-4" style="font-weight: bold">Profile Info</legend>
-          {{ updateform|crispy }}
-        </fieldset>
-
-        <fieldset class="form-group" >
-          <legend class="border-bottom mb-4" style="font-weight: bold">Personal Info</legend>
-          {{ infoupdateform|crispy }}
-        </fieldset>
-
-        <fieldset class="form-group">
-          <legend class="border-bottom mb-4" style="font-weight: bold">Change Image</legend>
-          {{ profileform|crispy }}
-        </fieldset>
-
-        <div class="form-group">
-          <button class="btn btn-outline-info" type="submit">Update</button>
+  <div class="content-section" style="position: absolute; left: 25px;">
+        <div class="media">
+          <img
+            class="rounded-circle account-img"
+            src="{{ user.profile.image.url }}"
+          />
         </div>
-      </form>
+
+          <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+          </div>
+        </div>
+
+  <div style="position: absolute; left: 50%; transform: translate(-50%, 0%); ">
+    <div class="content-section">
+    <br>
+      <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4" style="font-weight: bold">Profile Info</legend>
+              {{ updateform|crispy }}
+            </fieldset>
+
+            <fieldset class="form-group" >
+              <legend class="border-bottom mb-4" style="font-weight: bold">Personal Info</legend>
+              {{ infoupdateform|crispy }}
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4" style="font-weight: bold">Change Image</legend>
+              {{ profileform|crispy }}
+            </fieldset>
+
+            <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+      </div>
     </div>
   </div>
-
+</div>
 {% endblock %}
