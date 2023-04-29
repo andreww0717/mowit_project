@@ -18,7 +18,7 @@ class ServiceForm(forms.ModelForm):
 
   class Meta:
     model = Service
-    fields = ("name", "price", "description", "tags")
+    fields = ("account", "name", "price", "description", "tags")
 
   def save(self, commit=True):
         service = super(ServiceForm, self).save(commit=False)

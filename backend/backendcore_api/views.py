@@ -33,7 +33,9 @@ from .forms import NewUserForm, UserUpdateForm, ProfileUpdateForm, UserInfoUpdat
 
 # Homepage
 def homepage(request):
-	return render(request=request, template_name='homepage.html')
+	user = request.user.id
+	all_service = Service.objects.filter(account_id = user)
+	return render(request, 'homepage.html', {'services': all_service})
 
 # Registration Form
 def register_request(request):
@@ -109,6 +111,7 @@ def profile_request(request):
 #Show data in contractor dashboard
 def show_service(request):
   all_service = Service.objects.all()
+  print(all_service)
   return render(request, 'contractor_dashboard.html', {'services':all_service})
 
 #Edit Profile

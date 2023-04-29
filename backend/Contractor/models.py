@@ -11,12 +11,13 @@ class Tag(models.Model):
 
 class Service(models.Model):
 
-  contractors = models.ManyToManyField(User)
+  account = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
   name = models.CharField(max_length=200, null=True)
   price = models.FloatField(null=True)
   description = models.CharField(max_length=200, null=True)
   date_created = models.DateTimeField(auto_now_add=True, null=True)
   tags = models.ManyToManyField(Tag)
+  
 
 
   def __str__(self):
